@@ -95,7 +95,7 @@ ol, ul {
 }
 
 .zf-templateWidth { 
-	width:800px;
+	width:inherit;
 	}
 
 .zf-templateWrapper {
@@ -170,6 +170,7 @@ ol, ul {
 	margin:0;
 	padding:0;
 	overflow:hidden;
+	display:none;
 }
 
 .zf-tempHeadContBdr {
@@ -215,9 +216,11 @@ ol, ul {
 }
 
 .zf-tempFrmWrapper .zf-labelName {
+	font-family: Raleway;
+	font-style: normal; 
 	font-weight:bold;
 	font-size:13px;
-	color:#444;
+	color:#E46A12;
 }
 
 .zf-form-sBox{ 
