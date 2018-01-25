@@ -47,8 +47,25 @@
       	return trackingField == true;
 	}
 
+var hiddenFields = ["webpage"];
+function hideFields(hiddenFields){
+	//Selects list of all HTML input fields
+	let labelNames = document.querySelectorAll(".zf-labelName");
+	//For each field that needs to be hidden:
+	for (var i=0; i< hiddenFields.length; i++){
+		//Look through list with all input fields
+		for (var j=0; j<labelNames.length;p j++){
+			//If match, run the function
+			if (labelNames[j].innerText.toLowerCase().trim() === hiddenFields[i]){
+				labelNames[j].parentElement.style = "display:none";
+			}
+		}
+	}
+}
+	
 	window.onload = function() {
-			if (insertCid()){
+		hideFields(hiddenFields);
+			if (insertCid()==true){
 				let cidInput = document.querySelector("#cid");
 				console.log("The tracking Input field: ")
 		  		console.log(cidInput);
