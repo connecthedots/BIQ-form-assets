@@ -66,10 +66,10 @@
 		document.querySelectorAll(".zf-labelName").forEach(field => {
 			if (field.innerText.toLowerCase().trim()==="webpage"){
                	try {
-               		field.value = webpage;
+               		field.nextElementSibling.querySelector("input").value = webpage;
            		} catch(err) {
            			//Defaults to pathname of current url
-           			field.value = window.location.pathname;
+           			field.nextElementSibling.querySelector("input").value = window.location.pathname;
            		}		    	
 		    }
 		});		
