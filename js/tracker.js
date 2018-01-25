@@ -53,7 +53,7 @@
 		//For each field that needs to be hidden:
 		for (var i=0; i< hiddenFields.length; i++){
 			//Look through list with all input fields
-			for (var j=0; j<labelNames.length;p j++){
+			for (var j=0; j<labelNames.length; j++){
 				//If match, run the function
 				if (labelNames[j].innerText.toLowerCase().trim() === hiddenFields[i]){
 					labelNames[j].parentElement.style = "display:none";
@@ -61,8 +61,7 @@
 			}
 		}
 	}
-	var webpage = "TrivIQ";
-	
+
 	function addReferringPage(webpage){
 		document.querySelectorAll(".zf-labelName").forEach(field => {
 			if (field.innerText.toLowerCase().trim()==="webpage"){
@@ -73,7 +72,7 @@
            			field.value = window.location.pathname;
            		}		    	
 		    }
-		};		
+		});		
 	}
 
 	window.onload = function() {

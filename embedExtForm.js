@@ -1,10 +1,11 @@
 /*=============OPTIONAL INPUTS =============
     formType: manually designate which specific form to insert, default is general
     webpage: manually designate the referring page
+    redirectURL: designate redirect page after form submission, default is zoho thank you page
 */
 const formType = "questForm";
 var webpage = "questIQ";
-
+const redirectUrl = "https://www.breakoutiq.com/thanks-for-inquiring";
 
 //*******PASTE HERE IF UPDATING FORM*********
 const questFormCode = 
