@@ -5,7 +5,7 @@ const trivFormCode =
     <div class="zf-templateWidth">
         <form action='https://forms.zohopublic.com/breakoutiq1/form/QuestInquiryFormTest/formperma/7jI9sCxnrc90IXxtf8qtVT3OhDRWwpZiZLejN2WuJis/htmlRecords/submit' name='form' method='POST' onSubmit='javascript:document.charset="UTF-8"; return zf_ValidateAndSubmit();' accept-charset='UTF-8' enctype='multipart/form-data' id='form'><input type="hidden" name="zf_referrer_name" value="">
             <!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
-            <input type="hidden" name="zf_redirect_url" value="https://www.breakoutiq.com/thanks-for-inquiring">
+            <input type="hidden" name="zf_redirect_url" value="">
             <!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
             <div class="zf-templateWrapper">
                 <!---------template Header Starts Here---------->
@@ -20,20 +20,20 @@ const trivFormCode =
                 <!---------template Container Starts Here---------->
                 <div class="zf-subContWrap zf-rightAlign">
                     <ul>
-                        <!---------HIDDEN Single Line Starts Here---------->
-                        <li class="zf-tempFrmWrapper zf-small" style="display:none" ><label class="zf-labelName">Tracking ID
+                        <!---------Single Line Starts Here---------->
+                        <li class="zf-tempFrmWrapper zf-small"><label class="zf-labelName">Tracking ID 
 </label>
                             <div class="zf-tempContDiv"><span> 
 <input type="text" name="SingleLine5" checktype="c1" value="" maxlength="255" invlovedinsalesiq=false /> </span>
-                                <p id="SingleLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                                <p id="SingleLine5_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
                             </div>
                             <div class="zf-clearBoth"></div>
                         </li>
                         <!---------Single Line Ends Here---------->
                         <!---------Single Line Starts Here---------->
                         <li class="zf-tempFrmWrapper zf-small"><label class="zf-labelName">Name 
-    <em class="zf-important">*</em>
-    </label>
+<em class="zf-important">*</em>
+</label>
                             <div class="zf-tempContDiv"><span> 
 <input type="text" name="SingleLine" checktype="c1" value="" maxlength="255" invlovedinsalesiq=false /> </span>
                                 <p id="SingleLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
@@ -125,9 +125,16 @@ const trivFormCode =
                             <div class="zf-clearBoth"></div>
                         </li>
                         <!---------Dropdown Ends Here---------->
-                        <!---------HIDDEN Single Line Starts Here---------->
-<input type="hidden" name="SingleLine4" checktype="c1" value="TestPage" maxlength="255" invlovedinsalesiq=false />
-                        <!---------Single Line Ends Here---------->                          
+                        <!---------Single Line Starts Here---------->
+                        <li class="zf-tempFrmWrapper zf-small"><label class="zf-labelName">Webpage 
+</label>
+                            <div class="zf-tempContDiv"><span> 
+<input type="text" name="SingleLine4" checktype="c1" value="Contact" maxlength="255" invlovedinsalesiq=false /> </span>
+                                <p id="SingleLine4_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                            </div>
+                            <div class="zf-clearBoth"></div>
+                        </li>
+                        <!---------Single Line Ends Here---------->
                     </ul>
                 </div>
                 <!---------template Container Starts Here---------->
@@ -140,13 +147,14 @@ const trivFormCode =
     </div>
     <!-- 'zf-templateWidth' ends -->
     `;
-    
+
+
 //Creates new element for script tags
 var script = document.createElement('script');
 script.setAttribute("type", "text/javascript");
 script.innerHTML = `var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[\/]([0][1-9]|1[012])[\/](?:(?:19|20)[0-9]{2})$");
         var zf_MandArray = ["SingleLine", "Email", "SingleLine1", "SingleLine2"];
-        var zf_FieldArray = ["SingleLine", "Email", "PhoneNumber_countrycode", "SingleLine1", "SingleLine2", "SingleLine3", "MultiLine", "Dropdown"];
+        var zf_FieldArray = ["SingleLine5", "SingleLine", "Email", "PhoneNumber_countrycode", "SingleLine1", "SingleLine2", "SingleLine3", "MultiLine", "Dropdown", "SingleLine4"];
         var isSalesIQIntegrationEnabled = false;`;
 
 //Search for specified form, and insert the appropriate form code
