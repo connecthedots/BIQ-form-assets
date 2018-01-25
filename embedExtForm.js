@@ -1,8 +1,13 @@
+//Creates new element for script tags
+var script = document.createElement('script');
+script.setAttribute("type", "text/javascript");
+script.innerHTML = `var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[\/]([0][1-9]|1[012])[\/](?:(?:19|20)[0-9]{2})$");
+        var zf_MandArray = ["SingleLine", "Email", "SingleLine1", "SingleLine2"];
+        var zf_FieldArray = ["SingleLine", "Email", "PhoneNumber_countrycode", "SingleLine1", "SingleLine2", "SingleLine3", "MultiLine", "Dropdown"];
+        var isSalesIQIntegrationEnabled = false;`;
+
 document.querySelector("#insertForm").innerHTML = 
-`
-<link href="https://codepen.io/connecthedots/pen/LeMVpM.css" rel="stylesheet" type="text/css">
-<script src="https://codepen.io/connecthedots/pen/LeMVpM.js"></script>
-    <!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
+`    <!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
     <div class="zf-templateWidth">
         <form action='https://forms.zohopublic.com/breakoutiq1/form/QuestInquiryFormTest/formperma/7jI9sCxnrc90IXxtf8qtVT3OhDRWwpZiZLejN2WuJis/htmlRecords/submit' name='form' method='POST' onSubmit='javascript:document.charset="UTF-8"; return zf_ValidateAndSubmit();' accept-charset='UTF-8' enctype='multipart/form-data' id='form'><input type="hidden" name="zf_referrer_name" value="">
             <!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
@@ -140,10 +145,6 @@ document.querySelector("#insertForm").innerHTML =
         </form>
     </div>
     <!-- 'zf-templateWidth' ends -->
-    <script type="text/javascript">
-        var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[\/]([0][1-9]|1[012])[\/](?:(?:19|20)[0-9]{2})$");
-        var zf_MandArray = ["SingleLine", "Email", "SingleLine1", "SingleLine2"];
-        var zf_FieldArray = ["SingleLine", "Email", "PhoneNumber_countrycode", "SingleLine1", "SingleLine2", "SingleLine3", "MultiLine", "Dropdown"];
-        var isSalesIQIntegrationEnabled = false;
-    </script>"
     `;
+
+    form.appendChild(script);
