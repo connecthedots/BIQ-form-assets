@@ -1,11 +1,14 @@
-	//Searches for necessary input field, and if existing, executes script to embed tracking ID
-	//Returns false if non-existent cid
+	/*Searches for tracking id input field
+    If existing, executes script to embed tracking ID
+	Returns false if field non-existent*/
 
 	function exists(element) {
+	//Checks if queried element exists
 	  return (element !== null)
 	}
 
 	function getClientId(uaid) {
+		//retrieves cid from google analytics trackers
 	    try {
 	        var trackers = ga.getAll();
 	        var i, len;
@@ -28,13 +31,14 @@
 		if (labelNames.length > 0){
 			var trackingField = false
 			labelNames.forEach(field =>{
-			    if (field.innerText.toLowerCase().trim()!=="tracking id"){
-			        console.log("Not the tracking ID field");
-					return;
-			    } else {
+			    if (field.innerText.toLowerCase().trim()==="tracking id"){
+			    	field.parentElement.style = "display:none";
                    	//Attach CID to the correct input field
                   	field.nextElementSibling.querySelector("input").id="cid";
-					trackingField = true;
+					trackingField = true;			    	
+			    } else {
+			        console.log("Not the tracking ID field");
+					return;
 			    }
 			})
 		} else {
