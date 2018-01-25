@@ -28,16 +28,15 @@
 		let labelNames = document.querySelectorAll(".zf-labelName");
 		//console.log("Here are the labels: ");
 		//console.log(labelNames);
+		var trackingField = false
 		if (labelNames.length > 0){
-			var trackingField = false
 			labelNames.forEach(field =>{
 			    if (field.innerText.toLowerCase().trim()==="tracking id"){
-			    	field.parentElement.style = "display:none";
                    	//Attach CID to the correct input field
                   	field.nextElementSibling.querySelector("input").id="cid";
 					trackingField = true;			    	
 			    } else {
-			        console.log("Not the tracking ID field");
+			        // console.log("Not the tracking ID field");
 					return;
 			    }
 			})
@@ -47,25 +46,43 @@
       	return trackingField == true;
 	}
 
-var hiddenFields = ["webpage"];
-function hideFields(hiddenFields){
-	//Selects list of all HTML input fields
-	let labelNames = document.querySelectorAll(".zf-labelName");
-	//For each field that needs to be hidden:
-	for (var i=0; i< hiddenFields.length; i++){
-		//Look through list with all input fields
-		for (var j=0; j<labelNames.length;p j++){
-			//If match, run the function
-			if (labelNames[j].innerText.toLowerCase().trim() === hiddenFields[i]){
-				labelNames[j].parentElement.style = "display:none";
+	var hiddenFields = ["webpage", "tracking id"];
+	function hideFields(hiddenFields){
+		//Selects list of all HTML input fields
+		let labelNames = document.querySelectorAll(".zf-labelName");
+		//For each field that needs to be hidden:
+		for (var i=0; i< hiddenFields.length; i++){
+			//Look through list with all input fields
+			for (var j=0; j<labelNames.length;p j++){
+				//If match, run the function
+				if (labelNames[j].innerText.toLowerCase().trim() === hiddenFields[i]){
+					labelNames[j].parentElement.style = "display:none";
+				}
 			}
 		}
 	}
-}
+	var webpage = "TrivIQ";
 	
+	function addReferringPage(webpage){
+		document.querySelectorAll(".zf-labelName").forEach(field => {
+			if (field.innerText.toLowerCase().trim()==="webpage"){
+               	try {
+               		field.value = webpage;
+           		} catch(err) {
+           			//Defaults to pathname of current url
+           			field.value = window.location.pathname;
+           		}		    	
+		    }
+		};		
+	}
+
 	window.onload = function() {
-		hideFields(hiddenFields);
-			if (insertCid()==true){
+		if (document.forms.length>0) {
+			hideFields(hiddenFields);
+			addReferringPage(webpage);
+			document.forms.form["zf_redirect_url"].value = redirectUrl;
+			
+			if (insertCid()===true){
 				let cidInput = document.querySelector("#cid");
 				console.log("The tracking Input field: ")
 		  		console.log(cidInput);
@@ -80,6 +97,8 @@ function hideFields(hiddenFields){
 			} else {
 				console.log("insert CID function failed");
 				return false;
-			}
-			
+			}			
+		} else {
+			console.log("No form on page")
+		}	
 	}
