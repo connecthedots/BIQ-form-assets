@@ -1,12 +1,6 @@
-//Creates new element for script tags
-var script = document.createElement('script');
-script.setAttribute("type", "text/javascript");
-script.innerHTML = `var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[\/]([0][1-9]|1[012])[\/](?:(?:19|20)[0-9]{2})$");
-        var zf_MandArray = ["SingleLine", "Email", "SingleLine1", "SingleLine2"];
-        var zf_FieldArray = ["SingleLine", "Email", "PhoneNumber_countrycode", "SingleLine1", "SingleLine2", "SingleLine3", "MultiLine", "Dropdown"];
-        var isSalesIQIntegrationEnabled = false;`;
+const formType = "trivForm";
 
-document.querySelector("#insertForm").innerHTML = 
+const trivFormCode = 
 `    <!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
     <div class="zf-templateWidth">
         <form action='https://forms.zohopublic.com/breakoutiq1/form/QuestInquiryFormTest/formperma/7jI9sCxnrc90IXxtf8qtVT3OhDRWwpZiZLejN2WuJis/htmlRecords/submit' name='form' method='POST' onSubmit='javascript:document.charset="UTF-8"; return zf_ValidateAndSubmit();' accept-charset='UTF-8' enctype='multipart/form-data' id='form'><input type="hidden" name="zf_referrer_name" value="">
@@ -146,5 +140,32 @@ document.querySelector("#insertForm").innerHTML =
     </div>
     <!-- 'zf-templateWidth' ends -->
     `;
+    
+//Creates new element for script tags
+var script = document.createElement('script');
+script.setAttribute("type", "text/javascript");
+script.innerHTML = `var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[\/]([0][1-9]|1[012])[\/](?:(?:19|20)[0-9]{2})$");
+        var zf_MandArray = ["SingleLine", "Email", "SingleLine1", "SingleLine2"];
+        var zf_FieldArray = ["SingleLine", "Email", "PhoneNumber_countrycode", "SingleLine1", "SingleLine2", "SingleLine3", "MultiLine", "Dropdown"];
+        var isSalesIQIntegrationEnabled = false;`;
 
-    form.appendChild(script);
+//Search for specified form, and insert the appropriate form code
+function searchForm(formType){
+    var form = document.querySelector("#"+formType) 
+        if (form!== null){
+            if (formType === 'trivForm'){
+                form.innerHTML = trivFormCode;
+                form.appendChild(script);
+            } else if (formType === 'generalForm') {
+                form.innerHTML = generalFormCode;
+                form.appendChild(script);
+            } else {
+                return false;
+        }
+    }
+}
+
+//Executes function after document loaded
+window.onload = searchForm(formType);
+
+    
