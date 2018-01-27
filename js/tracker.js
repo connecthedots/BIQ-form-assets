@@ -46,23 +46,27 @@
       	return trackingField == true;
 	}
 
-	var hiddenFields = ["webpage", "tracking id"];
+
 	function hideFields(hiddenFields){
-		//Selects list of all HTML input fields
-		let labelNames = document.querySelectorAll(".zf-labelName");
-		//For each field that needs to be hidden:
-		for (var i=0; i< hiddenFields.length; i++){
-			//Look through list with all input fields
-			for (var j=0; j<labelNames.length; j++){
-				//If match, run the function
-				if (labelNames[j].innerText.toLowerCase().trim() === hiddenFields[i]){
-					labelNames[j].parentElement.style = "display:none";
+		if (hiddenFields.length>0){
+			//Selects list of all HTML input fields
+			let labelNames = document.querySelectorAll(".zf-labelName");
+			//For each field that needs to be hidden:
+			for (var i=0; i< hiddenFields.length; i++){
+				//Look through list with all input fields
+				for (var j=0; j<labelNames.length; j++){
+					//If match, run the function
+					if (labelNames[j].innerText.toLowerCase().trim() === hiddenFields[i]){
+						labelNames[j].parentElement.style = "display:none";
+					}
 				}
-			}
+			}			
+		} else {
+			return;
 		}
 	}
 
-	function addReferringPage(webpage){
+	function addReferringPage(){
 		document.querySelectorAll(".zf-labelName").forEach(field => {
 			if (field.innerText.toLowerCase().trim()==="webpage"){
                	try {
@@ -75,11 +79,21 @@
 		});		
 	}
 
+	function addRedirectUrl(){
+		try {
+			document.forms.form["zf_redirect_url"].value = redirectUrl;
+		} catch (err) {
+			//Defaults to general thank you page
+			document.forms.form["zf_redirect_url"].value = "https://www.breakoutiq.com/thanks-for-inquiring";
+			console.log("No specific redirect URL provided");
+		}
+	}
+
 	window.onload = function() {
 		if (document.forms.length>0) {
 			hideFields(hiddenFields);
-			addReferringPage(webpage);
-			document.forms.form["zf_redirect_url"].value = redirectUrl;
+			addReferringPage();
+			addRedirectUrl();
 			
 			if (insertCid()===true){
 				let cidInput = document.querySelector("#cid");

@@ -1,13 +1,16 @@
-/*=============OPTIONAL INPUTS =============
+/*============= OPTIONAL INPUTS =============
+    hiddenFields: array, takes in Strings that are names of field labels to be hidden.
     formType: manually designate which specific form to insert, default is general
     webpage: manually designate the referring page
     redirectURL: designate redirect page after form submission, default is zoho thank you page
 */
 const formType = "questForm";
-var webpage = "questIQ";
+const webpage = "questIQ";
 const redirectUrl = "https://www.breakoutiq.com/thanks-for-inquiring";
+const hiddenFields = ["webpage", "tracking id"];
+// ============= END INPUTS =============
 
-//*******PASTE HERE IF UPDATING FORM*********
+//*******MODIFY THIS SECTION IF UPDATING QUEST FORM*********
 const questFormCode = 
 `    
     <!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
@@ -156,27 +159,34 @@ const questFormCode =
         </div>
     <!-- 'zf-templateWidth' ends -->
 `;
+//********************************
 
+//*******MODIFY THIS SECTION IF UPDATING GENERAL FORM*********
 const generalFormCode = 
 `
     <div>Currently No Code Here</div>
 `
+//********************************
 
-//[General Forms] Creates new element for script tags
+//[General Form] Creates new element for script tags
 var scriptGeneral = document.createElement('script');
 scriptGeneral.setAttribute("type", "text/javascript");
+//*******MODIFY THIS SECTION IF UPDATING SCRIPT*********
 scriptGeneral.innerHTML = `var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[\/]([0][1-9]|1[012])[\/](?:(?:19|20)[0-9]{2})$");
         var zf_MandArray = ["SingleLine", "Email", "SingleLine1", "SingleLine2"];
         var zf_FieldArray = ["SingleLine5", "SingleLine", "Email", "PhoneNumber_countrycode", "SingleLine1", "SingleLine2", "SingleLine3", "MultiLine", "Dropdown", "SingleLine4"];
         var isSalesIQIntegrationEnabled = false;`;
+//********************************
 
-//[Quest Forms] Creates new element for script tags
+//[Quest Form] Creates new element for script tags
 var scriptQuest = document.createElement('script');
 scriptQuest.setAttribute("type", "text/javascript");
+//*******MODIFY THIS SECTION IF UPDATING SCRIPT*********
 scriptQuest.innerHTML = `var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[\/]([0][1-9]|1[012])[\/](?:(?:19|20)[0-9]{2})$");
         var zf_MandArray = ["SingleLine", "Email", "SingleLine1", "SingleLine2"];
         var zf_FieldArray = ["SingleLine5", "SingleLine", "Email", "PhoneNumber_countrycode", "SingleLine1", "SingleLine2", "SingleLine3", "MultiLine", "Dropdown", "SingleLine4"];
         var isSalesIQIntegrationEnabled = false;`;
+//********************************
 
 //Insert the specified form code
 function insertForm(formType){
