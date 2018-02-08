@@ -90,19 +90,16 @@
 	}
 
 	window.onload = function() {
-		if (typeof window.trackingForm !== 'undefined') {
-			document.querySelector("iframe").style = 'display:none;'
-			// var basicFormScript = document.createElement('iframe');
-			// // basicFormScript.setAttribute("type", "text/javascript");			
-			// basicFormScript.src = "https://forms.zohopublic.com/breakoutiq1/form/QuestInquiryForm/jsperma/J1mA5fHBe1f902fAe12_DK452";
-			// // basicFormScript.setAttribute("id", "ZFScript");
-			// document.querySelector("div").appendChild(basicFormScript);	
+		//Display backup form if source code not available
+		if (typeof window.trackingForm === 'undefined') {
+			var basicFormFrame = document.createElement("div");
+			basicFormFrame.innerHTML = `<iframe frameborder="0" style="height:1000px;width:99%;border:none;" src='https://forms.zohopublic.com/breakoutiq1/form/Contact/formperma/38G1MDAJ5mDd4kA2274kf35Cj'></iframe>`
+			document.querySelector(".zForm").appendChild(basicFormFrame);
 		}
 		if (document.forms.length>0) {
 			hideFields(hiddenFields);
 			addReferringPage();
 			addRedirectUrl();
-			document.querySelector(".zForm").style ="display:block;";
 
 			if (insertCid()===true){
 				let cidInput = document.querySelector("#cid");

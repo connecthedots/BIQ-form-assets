@@ -358,6 +358,8 @@ scriptQuest.innerHTML = `var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9]
 
 //Insert the specified form code
 function insertForm(){
+
+    
     if (typeof window.formType === 'undefined'){
         formId = document.querySelector(".zForm").id
         //Default is general form
